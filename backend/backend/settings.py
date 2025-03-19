@@ -31,7 +31,7 @@ DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = [
-    'https://chatbot-ai-gydp.onrender.com/', 'localhost', '127.0.0.1',
+    'chatbot-ai-gydp.onrender.com', 'localhost', '127.0.0.1',
 ]
 
 
