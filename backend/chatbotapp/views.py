@@ -16,8 +16,8 @@ genai.configure(api_key=settings.GEMINI_API_KEY)
 model = genai.GenerativeModel('gemini-2.0-flash')
 
 # MongoDB connection
-MONGO_CLIENT = pymongo.MongoClient('mongodb://localhost:27017/')
-MONGO_DB = MONGO_CLIENT["chats"]
+MONGO_CLIENT = pymongo.MongoClient(settings.MONGO_URI)
+MONGO_DB = MONGO_CLIENT[settings.MONGO_DB_NAME]
 CHATS_COLLECTION = MONGO_DB["chats"]
 
 

@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,12 +23,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-ptgxmyrmw35c+480b7csl4ujno185+8)j!dtx1ii$=p*4#59j+"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '*.onrender.com', 'localhost', '127.0.0.1',
+]
 
 
 # Application definition
@@ -42,6 +48,7 @@ INSTALLED_APPS = [
     # Created apps / framework
     "chatbotapp",
     "rest_framework",
+    "corsheaders"
 ]
 
 MIDDLEWARE = [
@@ -52,12 +59,20 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    
+    # Python Whitenoise
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 
     # Installed middlewares
     "corsheaders.middleware.CorsMiddleware",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "*.onrender.com/",
+    "http://localhost:3000",
+]
 
 ROOT_URLCONF = "backend.urls"
 
@@ -125,7 +140,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = "static/"
+# STATIC_URL = "static/"
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -135,10 +153,16 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 # Gemini API key
-with open("gemini_api_key.txt", "r") as f:
-    GEMINI_API_KEY = f.read().strip()
+# with open("gemini_api_key.txt", "r") as f:
+#     GEMINI_API_KEY = f.read().strip()
 
 
 #MongoDB Configuration:
-MONGO_URI = "mongodb://localhost:27017"
+# MONGO_URI = "mongodb://localhost:27017"
 MONGO_DB_NAME = "ChatBot_AI"
+
+
+# Load environment variables from .env file
+load_dotenv()
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+MONGO_URI = os.getenv('MONGO_URI')

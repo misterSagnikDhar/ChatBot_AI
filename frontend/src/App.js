@@ -4,8 +4,8 @@ import Header from "./components/Header";
 import SideBar from "./components/SideBar";
 import FooterInput from "./components/FooterInput";
 import Messages from "./components/Messages";
-import ScrollToTopButton from "./components/ScrollToTopButton"; // New component
-import ScrollToBottomButton from "./components/ScrollToBottomButton"; // New component
+import ScrollToTopButton from "./components/ScrollToTopButton";
+import ScrollToBottomButton from "./components/ScrollToBottomButton";
 import axios from 'axios';
 
 function App() {
