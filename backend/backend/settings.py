@@ -31,7 +31,7 @@ DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = [
-    '*.onrender.com', 'localhost', '127.0.0.1',
+    'https://chatbot-ai-gydp.onrender.com/', 'localhost', '127.0.0.1',
 ]
 
 
@@ -70,7 +70,7 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOWED_ORIGINS = [
-    "https://chatbot-ai-gydp.onrender.com/",
+    "*.onrender.com/",
     "http://localhost:3000",
 ]
 
