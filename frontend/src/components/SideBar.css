@@ -1,0 +1,20 @@
+/* For Webkit browsers like Chrome, Safari */
+.sidebar::-webkit-scrollbar {
+  width: 6px; /* Thin scrollbar */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: rgb(255 255 255 / 60%); /* Light thumb color */
+  border-radius: 10px; /* Rounded corners */
+  border: 2px solid rgb(0 0 0 / 20%); /* Optional: adds a subtle border around the thumb */
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent; /* Make the track transparent */
+}
+
+/* For Firefox */
+.sidebar {
+  scrollbar-width: thin; /* Thin scrollbar */
+  scrollbar-color: rgb(255 255 255 / 60%) transparent; /* Thumb and track colors */
+}
