@@ -20,7 +20,7 @@ function App() {
     const resetChats = async () => {
       try {
         console.log('Resetting chats...');
-        const response = await axios.post('http://localhost:8000/api/reset-chats/');
+        const response = await axios.post('https://chatbot-ai-gydp.onrender.com/');
         console.log('Reset response:', response.data);
         setMessages([]);
         setConversationId('chat-1');
@@ -38,7 +38,7 @@ function App() {
       const fetchChatHistory = async () => {
         try {
           console.log('Fetching history for:', conversationId);
-          const response = await axios.get('http://localhost:8000/api/chat-history/', {
+          const response = await axios.get('https://chatbot-ai-gydp.onrender.com/', {
             params: { conversation_id: conversationId },
           });
           const chatHistory = response.data.chats;

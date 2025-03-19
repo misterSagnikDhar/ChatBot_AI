@@ -22,7 +22,7 @@ const SideBar = ({ conversationId, setConversationId, isVisible, setIsVisible, o
 
   const handleNewChat = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/api/new-chat/');
+      const response = await axios.post('https://chatbot-ai-gydp.onrender.com/api/new-chat/');
       const newConversationId = response.data.conversation_id;
       const newChat = { id: newConversationId, name: `Chat ${chatHistory.length + 1}` };
       setChatHistory([...chatHistory, newChat]);

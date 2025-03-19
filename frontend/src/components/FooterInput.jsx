@@ -15,7 +15,7 @@ const FooterInput = ({ onSendMessage, conversationId }) => {
     resetTextareaHeight(); // Reset height immediately
 
     try {
-      const response = await axios.post('http://localhost:8000/api/chatbot/', {
+      const response = await axios.post('https://chatbot-ai-gydp.onrender.com/api/chatbot/', {
         message: inputValue,
         conversation_id: conversationId,
       });
